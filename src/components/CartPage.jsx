@@ -70,7 +70,8 @@ function CartPage() {
 
                                                     {/* //<!-- Price --> */}
                                                     <p className="text-start text-md-center">
-                                                        <strong>{data.price}</strong>
+                                                        <strong>{data.totalPrice}</strong>
+                                                        {console.log("data.totalPrice",data.totalPrice)}
                                                     </p>
                                                     {/* //<!-- Price --> */}
                                                 </div>
