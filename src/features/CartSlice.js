@@ -24,15 +24,15 @@ export const cartSlice = createSlice({
                 state.cart.push(action.payload)
             }
 
-            state.cart = state.cart.map((item) => {
-                console.log("item.quantity in increement", item.totalPrice);
-                if (item.id == action.payload.id) {
+            // state.cart = state.cart.map((item) => {
+            //     console.log("item.quantity in increement", item.totalPrice);
+            //     if (item.id == action.payload.id) {
 
-                    return { ...item, totalPrice: item.price * item.quantity }
-                }
+            //         return { ...item, totalPrice: item.price * item.quantity }
+            //     }
 
-                return item
-            })
+            //     return item
+            // })
 
         },
         getCartTotal: (state) => {
@@ -90,7 +90,7 @@ export const cartSlice = createSlice({
         },
         decreaseQuantity: (state, action) => {
             state.cart = state.cart.map((item) => {
-                console.log("item.quantity in decrement", item.quantity);
+                // console.log("item.quantity in decrement", item.quantity);
 
                 if (item.id == action.payload.id) {
                     return { ...item, quantity: item.quantity - 1 }
@@ -98,14 +98,23 @@ export const cartSlice = createSlice({
                 return item
             })
             state.cart = state.cart.map((item) => {
-                console.log("item.quantity in increement", item.totalPrice);
+                // console.log("item.quantity in increement", item.totalPrice);
                 if (item.id == action.payload.id) {
 
-                    return { ...item, totalPrice: item.price * item.quantity }
+                    if (item.quantity > 0) {
+                        return { ...item, totalPrice: item.price * item.quantity }
+                    }
+                    else {
+                        return { ...item, quantity: 1 }
+                    }
+
                 }
 
                 return item
             })
+
+
+
         }
     },
 })

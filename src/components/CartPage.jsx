@@ -22,7 +22,7 @@ function CartPage() {
                                 <div className="card-body">
                                     {
                                         cart.map((data => (
-                                            <div className="row">
+                                            <div className="row" key={data.id}>
                                                 <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
                                                     {/* //<!-- Image --> */}
                                                     <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
@@ -50,15 +50,15 @@ function CartPage() {
 
                                                 <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                                     {/* //<!-- Quantity --> */}
+                                                        <p className='text-center'>Quantity</p>
                                                     <div className="d-flex mb-4" style={{ maxWidth: ' 300px' }}>
                                                         <button className="btn btn-primary px-3 me-2"
                                                             onClick={() => dispatch(decreaseQuantity(data))}>
                                                             <i className="fas fa-minus"></i>
                                                         </button>
-
                                                         <div className="form-outline">
                                                             <input id="form1" min="0" name="quantity" value={data.quantity} type="number" className="form-control" />
-                                                            <label className="form-label" for="form1">Quantity</label>
+                                                            {/* <label className="form-label" for="form1">Quantity</label> */}
                                                         </div>
 
                                                         <button className="btn btn-primary px-3 ms-2"
@@ -71,7 +71,7 @@ function CartPage() {
                                                     {/* //<!-- Price --> */}
                                                     <p className="text-start text-md-center">
                                                         <strong>{data.totalPrice}</strong>
-                                                        {console.log("data.totalPrice",data.totalPrice)}
+                                                        {console.log("data.totalPrice", data.totalPrice)}
                                                     </p>
                                                     {/* //<!-- Price --> */}
                                                 </div>
